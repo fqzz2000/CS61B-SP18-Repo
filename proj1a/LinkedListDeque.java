@@ -10,15 +10,23 @@ public class LinkedListDeque<DataType> {
             this.next = next;
             this.prev = prev;
         }
+
+        private DataType getRecursive(int index) {
+            if (index == 0) {
+                return value;
+            }
+            return next.getRecursive(index-1);
+        }
     }
     private int size;
     private LinkedNode<DataType> sentinel;
-    public LinkedListDeque() {
+    LinkedListDeque() {
         sentinel = new LinkedNode<>(null, null, null);
         sentinel.next = sentinel;
         sentinel.prev = sentinel;
         size = 0;
     }
+
     public void addFirst(DataType val) {
         LinkedNode<DataType> node = new LinkedNode<>(val, sentinel.next, sentinel);
         sentinel.next.prev = node;
@@ -36,7 +44,14 @@ public class LinkedListDeque<DataType> {
     public int size() {
         return size;
     }
+    public DataType getRecursive(int index) {
+        if (index < 0 || index >= size) {
+            return null;
+        }
+        return sentinel.getRecursive(index-1);
 
+
+    }
     public DataType get(int index) {
         LinkedNode<DataType> ptr = sentinel;
         if (index < 0 || index >= size) {
@@ -94,3 +109,4 @@ public class LinkedListDeque<DataType> {
         }
     }
 }
+
