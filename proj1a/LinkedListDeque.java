@@ -28,7 +28,7 @@ public class LinkedListDeque<DataType> {
     public void addLast(DataType val){
         LinkedNode<DataType> node = new LinkedNode<>(val, sentinel, sentinel.prev);
         sentinel.prev = node;
-        size -= 1;
+        size += 1;
     }
 
     public int size(){
@@ -55,14 +55,32 @@ public class LinkedListDeque<DataType> {
     }
 
     public void printDeque(){
-        ;
+        LinkedNode<DataType> ptr = sentinel;
+        for (int i = 0; i < size; i++){
+            ptr = ptr.next;
+            System.out.println(ptr.value);
+        }
     }
 
-    public void removeFirst(){
-        ;
+    public DataType removeFirst(){
+        if (size > 0){
+            LinkedNode<DataType> node = sentinel.next;
+            sentinel.next = sentinel.next.next;
+            size -= 1;
+            return node.value;
+        }else{
+            return null;
+        }
     }
 
-    public void removeLast(){
-        ;
+    public DataType removeLast(){
+        if (size > 0){
+            LinkedNode<DataType> node = sentinel.prev;
+            sentinel.prev = sentinel.prev.prev;
+            size -= 1;
+            return node.value;
+        }else {
+            return null;
+        }
     }
 }
