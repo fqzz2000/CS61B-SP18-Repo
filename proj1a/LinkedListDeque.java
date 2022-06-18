@@ -36,7 +36,17 @@ public class LinkedListDeque<DataType> {
     }
 
     public DataType get(int index){
-        return null;
+        LinkedNode<DataType> ptr = sentinel;
+        if (index < size/2){
+            for (int i = 0; i <= index; i++){
+                ptr = ptr.next;
+        }
+        } else{
+            for (int i = 0; i <= size-index; i++){
+                ptr = ptr.prev;
+            }
+        }
+        return ptr.value;
     }
 
     public boolean isEmpty(){
