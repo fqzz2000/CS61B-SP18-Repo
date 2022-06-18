@@ -16,7 +16,7 @@ public class ArrayDeque<T> {
         T[] newItems = (T[]) new Object[newCapacity];
         if (ptrStart > ptrEnd) {
             System.arraycopy(items, ptrStart, newItems, 0, capacity - ptrStart);
-            System.arraycopy(items, 0, newItems, capacity - ptrStart - 1, ptrEnd + 1);
+            System.arraycopy(items, 0, newItems, capacity - ptrStart, ptrEnd + 1);
         } else {
             System.arraycopy(items, ptrStart, newItems, 0, size);
         }
@@ -60,16 +60,31 @@ public class ArrayDeque<T> {
     }
 
     public void printDeque() {
-        for (int i = ptrStart; i < size + ptrStart; i = i + 1 < size ? i + 1 : i + 1 - size){
-            System.out.println(items[i]);
+        for (int i = ptrStart; i < size + ptrStart; i++){
+            System.out.print(items[i < capacity ? i : i - capacity]);
+            System.out.print(' ');
         }
+        System.out.println();
     }
-
+    public T get(int index){
+        if (index < 0 || index >= size) return null;
+        index = index + ptrStart;
+        index = index < capacity ? index : index - capacity;
+        return items[index];
+    }
     public T removeFirst() {
-        return null;
+        T node = items[ptrStart];
+        ptrStart = ptrStart + 1 != capacity ? ptrStart + 1 : 0;
+        size -= 1;
+        updateSizeIfNeeded();
+        return node;
     }
 
     public T removeLast() {
-        return null;
+        T node = items[ptrEnd];
+        ptrEnd = ptrEnd - 1 != -1 ? ptrEnd - 1 : ptrEnd + capacity - 1;
+        size -= 1;
+        updateSizeIfNeeded();
+        return node;
     }
 }

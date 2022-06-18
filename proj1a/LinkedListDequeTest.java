@@ -29,6 +29,71 @@ public class LinkedListDequeTest {
 		}
 	}
 
+	public static void addRemoveTestArray() {
+
+		System.out.println("Running add/remove test.");
+
+//		System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
+
+		ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
+		// should be empty
+		boolean passed = checkEmpty(true, lld1.isEmpty());
+
+		// should not be empty
+//		passed = checkEmpty(false, lld1.isEmpty()) && passed;
+		for (int i = 150; i > 0; i--) {
+			lld1.addFirst(i);
+		}
+		passed = checkSize(150, lld1.size()) && passed;
+
+		for (int i = 0; i < 100; i++) {
+			lld1.removeLast();
+		}
+
+		passed = checkSize(50, lld1.size()) && passed;
+
+		lld1.removeFirst();
+		// should be empty
+//		passed = checkEmpty(true, lld1.isEmpty()) && passed;
+		lld1.printDeque();
+		passed = checkSize(38, lld1.get(36)) && passed;
+		passed = checkSize(2, lld1.get(0)) && passed;
+		printTestStatus(passed);
+
+	}
+	/*
+	 *Adds a few things to the ALList, checking isEmpty() and size() are correct,
+	 * finally printing the results.
+	 * Same as addIsEmptySizeTest()
+	 */
+
+	public static void addIsEmptySizeTestArray(){
+		LinkedListDeque<String> lld1 = new LinkedListDeque<>();
+
+		boolean passed = checkEmpty(true, lld1.isEmpty());
+
+		lld1.addFirst("front");
+
+		// The && operator is the same as "and" in Python.
+		// It's a binary operator that returns true if both arguments true, and false otherwise.
+		passed = checkSize(1, lld1.size()) && passed;
+		passed = checkEmpty(false, lld1.isEmpty()) && passed;
+
+		lld1.addLast("middle");
+		passed = checkSize(2, lld1.size()) && passed;
+
+		lld1.addLast("back");
+		passed = checkSize(3, lld1.size()) && passed;
+		for (int i = 0; i < 9; i++){
+			lld1.addFirst("back1");
+		}
+		passed = checkSize(12, lld1.size()) && passed;
+
+		System.out.println("Printing out deque: ");
+		lld1.printDeque();
+
+		printTestStatus(passed);
+	}
 	/** Adds a few things to the list, checking isEmpty() and size() are correct, 
 	  * finally printing the results. 
 	  *
@@ -86,7 +151,7 @@ public class LinkedListDequeTest {
 
 	public static void main(String[] args) {
 		System.out.println("Running tests.\n");
-		addIsEmptySizeTest();
-		addRemoveTest();
+//		addIsEmptySizeTestArray();
+		addRemoveTestArray();
 	}
 } 
