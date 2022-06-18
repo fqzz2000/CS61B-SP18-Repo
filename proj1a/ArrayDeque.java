@@ -12,7 +12,7 @@ public class ArrayDeque<T> {
         ptrStart = 0;
         ptrEnd = 0;
     }
-    private void resizeToGivenLength(int newCapacity){
+    private void resizeToGivenLength(int newCapacity) {
         T[] newItems = (T[]) new Object[newCapacity];
         if (ptrStart > ptrEnd) {
             System.arraycopy(items, ptrStart, newItems, 0, capacity - ptrStart);
@@ -22,19 +22,19 @@ public class ArrayDeque<T> {
         }
         items = newItems;
         ptrStart = 0;
-        ptrEnd = size-1;
+        ptrEnd = size - 1;
         capacity = newCapacity;
     }
-    private void updateSizeIfNeeded(){
-        if (size == capacity){
-            resizeToGivenLength(capacity*2);
+    private void updateSizeIfNeeded() {
+        if (size == capacity) {
+            resizeToGivenLength(capacity * 2);
         } else if (capacity > 16 && ((float) size) / capacity < 0.25) {
-            resizeToGivenLength(capacity/2);
+            resizeToGivenLength(capacity / 2);
         }
     }
     public void addFirst(T val) {
         updateSizeIfNeeded();
-        if (size != 0){
+        if (size != 0) {
             ptrStart = ptrStart != 0 ? ptrStart - 1 : ptrStart + capacity - 1;
         }
         items[ptrStart] = val;
@@ -43,8 +43,8 @@ public class ArrayDeque<T> {
 
     public void addLast(T val) {
         updateSizeIfNeeded();
-        if (size != 0){
-            ptrEnd = ptrEnd != capacity-1 ? ptrEnd + 1 : ptrEnd-capacity + 1;
+        if (size != 0) {
+            ptrEnd = ptrEnd != capacity - 1 ? ptrEnd + 1 : ptrEnd - capacity + 1;
         }
         items[ptrEnd] = val;
         size += 1;
@@ -60,14 +60,16 @@ public class ArrayDeque<T> {
     }
 
     public void printDeque() {
-        for (int i = ptrStart; i < size + ptrStart; i++){
+        for (int i = ptrStart; i < size + ptrStart; i++) {
             System.out.print(items[i < capacity ? i : i - capacity]);
             System.out.print(' ');
         }
         System.out.println();
     }
-    public T get(int index){
-        if (index < 0 || index >= size) return null;
+    public T get(int index) {
+        if (index < 0 || index >= size) {
+            return null;
+        }
         index = index + ptrStart;
         index = index < capacity ? index : index - capacity;
         return items[index];
