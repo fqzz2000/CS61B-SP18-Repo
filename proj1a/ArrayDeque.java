@@ -5,7 +5,7 @@ public class ArrayDeque<T> {
     private int ptrStart;
     private int ptrEnd;
 
-    ArrayDeque() {
+    public ArrayDeque() {
         items = (T []) new Object[8];
         capacity = 8;
         size = 0;
