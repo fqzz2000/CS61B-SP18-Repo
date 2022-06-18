@@ -48,7 +48,7 @@ public class LinkedListDeque<DataType> {
         if (index < 0 || index >= size) {
             return null;
         }
-        return sentinel.getRecursive(index-1);
+        return sentinel.next.getRecursive(index);
 
 
     }
@@ -62,7 +62,7 @@ public class LinkedListDeque<DataType> {
                 ptr = ptr.next;
             }
         } else {
-            for (int i = 0; i <= size - index; i++) {
+            for (int i = 0; i < size - index; i++) {
                 ptr = ptr.prev;
             }
         }

@@ -84,7 +84,7 @@ public class ArrayDeque<T> {
 
     public T removeLast() {
         T node = items[ptrEnd];
-        ptrEnd = ptrEnd - 1 != -1 ? ptrEnd - 1 : ptrEnd + capacity - 1;
+        ptrEnd = ptrEnd != 0 ? ptrEnd - 1 : ptrEnd + capacity - 1;
         size -= 1;
         updateSizeIfNeeded();
         return node;
