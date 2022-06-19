@@ -75,27 +75,33 @@ public class ArrayDeque<T> {
         return items[index];
     }
     public T removeFirst() {
-        T node = items[ptrStart];
-        ptrStart = ptrStart + 1 != capacity ? ptrStart + 1 : 0;
-        size -= 1;
-        if (size == 0) {
-            ptrStart = 0;
-            ptrEnd = 0;
+        if (size > 0) {
+            T node = items[ptrStart];
+            ptrStart = ptrStart + 1 != capacity ? ptrStart + 1 : 0;
+            size -= 1;
+            if (size == 0) {
+                ptrStart = 0;
+                ptrEnd = 0;
+            }
+            updateSizeIfNeeded();
+            return node;
         }
-        updateSizeIfNeeded();
-        return node;
+        return null;
     }
 
     public T removeLast() {
-        T node = items[ptrEnd];
-        ptrEnd = ptrEnd != 0 ? ptrEnd - 1 : ptrEnd + capacity - 1;
-        size -= 1;
-        if (size == 0) {
-            ptrStart = 0;
-            ptrEnd = 0;
+        if (size > 0) {
+            T node = items[ptrEnd];
+            ptrEnd = ptrEnd != 0 ? ptrEnd - 1 : ptrEnd + capacity - 1;
+            size -= 1;
+            if (size == 0) {
+                ptrStart = 0;
+                ptrEnd = 0;
+            }
+            updateSizeIfNeeded();
+            return node;
         }
-        updateSizeIfNeeded();
-        return node;
+        return null;
     }
 }
 
