@@ -43,15 +43,23 @@ public class LinkedListDequeTest {
         for (int i = 0; i < 100; i++) {
             lld1.removeLast();
         }
-
         passed = checkSize(50, lld1.size()) && passed;
+        lld1.printDeque();
+        for (int i = 0; i < 50; i++) {
+            lld1.removeFirst();
+        }
+        lld1.printDeque();
+        for (int i = 60; i > 0; i--) {
+            lld1.addFirst(i);
+        }
+        lld1.printDeque();
 
         lld1.removeFirst();
         // should be empty
 //        passed = checkEmpty(true, lld1.isEmpty()) && passed;
-        lld1.printDeque();
-        passed = checkSize(38, lld1.get(36)) && passed;
-        passed = checkSize(2, lld1.get(0)) && passed;
+
+//        passed = checkSize(38, lld1.get(36)) && passed;
+//        passed = checkSize(2, lld1.get(0)) && passed;
         printTestStatus(passed);
 
     }
@@ -145,8 +153,8 @@ public class LinkedListDequeTest {
 
     public static void main(String[] args) {
         System.out.println("Running tests.\n");
-        addIsEmptySizeTestArray();
+//        addIsEmptySizeTestArray();
 //        addIsEmptySizeTest();
-//        addRemoveTestArray();
+        addRemoveTestArray();
     }
 }

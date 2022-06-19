@@ -88,7 +88,7 @@ public class IntList {
 //        }
 //        ptr.rest = B;
 //        return A;
-        if (A == null){
+        if (A == null) {
             return B;
         }
         A.rest = dcatenate(A.rest, B);
@@ -112,7 +112,7 @@ public class IntList {
 //        }
 //        newPtr.rest = B;
 //        return head;
-        if (A == null){
+        if (A == null) {
             return B;
         }
         IntList head = new IntList(A.first, null);
