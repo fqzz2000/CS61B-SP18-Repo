@@ -72,14 +72,20 @@ public class IntListTest {
 
     @Test
     public void testReverse() {
-        /** TODO: Test the .reverse() do reverse the linkedlist
-         * TODO: Test the .reverse() is disruptive
-         * TODO: Test the .reverse() handle null input appropriately
-         */
         IntList A = IntList.of(1, 1, 2, 1, 3);
-        IntList ExpectedA = IntList.of(3 ,1, 2, 1, 1);
-        assertEquals(ExpectedA, IntList.reverse(A));
-        assertNotEquals(A, IntList.reverse(A));
+        IntList expectedA = IntList.of(3, 1, 2, 1, 1);
+        IntList nullList = IntList.of();
+        IntList originalRest = A.rest;
+        IntList ptrExpected = expectedA;
+        IntList reverseHead = IntList.reverse(A);
+        IntList ptrReal = reverseHead;
+        while (ptrExpected != null) {
+            assertEquals(ptrExpected.first, ptrReal.first);
+            ptrExpected = ptrExpected.rest;
+            ptrReal = ptrReal.rest;
+        }
+        assertNotEquals(originalRest, reverseHead.rest);
+        assertEquals(nullList, IntList.reverse(nullList));
     }
 
 }
