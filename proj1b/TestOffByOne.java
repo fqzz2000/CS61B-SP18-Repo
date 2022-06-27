@@ -13,9 +13,9 @@ public class TestOffByOne {
     @Test
     public void testEqualChars() {
         // test for all cases
-        for (char i = 0; i < 127; i++) {
-            for (char j = 0; j < 127; j++) {
-                int diff = Math.max(i - j, j - i);
+        for (char i = 0; i < 255; i++) {
+            for (char j = 0; j < 255; j++) {
+                int diff = i - j > 0? i - j : j - i;
                 if (offByOne.equalChars(i, j)) {
                     assertEquals(1, diff);
                 } else {
@@ -29,12 +29,18 @@ public class TestOffByOne {
 
         assertTrue(palindrome.isPalindrome("", offByOne));
         assertTrue(palindrome.isPalindrome("%", offByOne));
+        assertTrue(palindrome.isPalindrome("a", offByOne));
         assertTrue(palindrome.isPalindrome("aCePfDb", offByOne));
         assertTrue(palindrome.isPalindrome("%%%%%&&&&&", offByOne));
         assertTrue(palindrome.isPalindrome("bDfPeCa", offByOne));
+        assertTrue(palindrome.isPalindrome("flake", offByOne));
 
         assertFalse(palindrome.isPalindrome("abcd", offByOne));
         assertFalse(palindrome.isPalindrome("##j##", offByOne));
         assertFalse(palindrome.isPalindrome("baBjkjkiII", offByOne));
+        assertFalse(palindrome.isPalindrome("goodmorning", offByOne));
+        assertFalse(palindrome.isPalindrome("aB", offByOne));
+        assertFalse(palindrome.isPalindrome("Ba", offByOne));
+
     }
 }
