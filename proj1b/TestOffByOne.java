@@ -29,6 +29,8 @@ public class TestOffByOne {
 
         assertTrue(palindrome.isPalindrome("", offByOne));
         assertTrue(palindrome.isPalindrome("%", offByOne));
+        assertTrue(palindrome.isPalindrome("rabq", offByOne));
+        assertTrue(palindrome.isPalindrome("b", offByOne));
         assertTrue(palindrome.isPalindrome("a", offByOne));
         assertTrue(palindrome.isPalindrome("aCePfDb", offByOne));
         assertTrue(palindrome.isPalindrome("%%%%%&&&&&", offByOne));
@@ -41,6 +43,8 @@ public class TestOffByOne {
         assertFalse(palindrome.isPalindrome("goodmorning", offByOne));
         assertFalse(palindrome.isPalindrome("aB", offByOne));
         assertFalse(palindrome.isPalindrome("Ba", offByOne));
+        assertFalse(palindrome.isPalindrome("baBjkjkiIIaaBBjinAAAA", offByOne));
+        assertFalse(palindrome.isPalindrome("haveaevaH"));
 
     }
 }
