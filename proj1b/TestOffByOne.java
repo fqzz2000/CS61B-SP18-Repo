@@ -7,27 +7,28 @@ public class TestOffByOne {
     // new ones, or the autograder might be upset.
 //    static CharacterComparator offByOne = new OffByOne();
     // Your tests go here.
-    Uncomment this class once you've created your CharacterComparator interface and OffByOne class. **/
+    */
     static CharacterComparator offByOne = new OffByOne();
+    static Palindrome palindrome = new Palindrome();
     @Test
     public void testEqualChars() {
         assertTrue(offByOne.equalChars('a', 'b'));
         assertFalse(offByOne.equalChars('b', 'd'));
-        assertFalse(offByOne.equalChars(' ',' '));
-        assertFalse(offByOne.equalChars('c','c'));
+        assertFalse(offByOne.equalChars(' ', ' '));
+        assertFalse(offByOne.equalChars('c', 'c'));
         assertTrue(offByOne.equalChars('B', 'A'));
     }
     @Test
     public void testPalindrome() {
 
-        assertTrue(offByOne.isPalindrome("", offByOne));
-        assertTrue(offByOne.isPalindrome("%", offByOne));
-        assertTrue(offByOne.isPalindrome("aCePfDb", offByOne));
-        assertTrue(offByOne.isPalindrome("%%%%%&&&&&", offByOne));
-        assertTrue(offByOne.isPalindrome("bDfPeCa", offByOne));
+        assertTrue(palindrome.isPalindrome("", offByOne));
+        assertTrue(palindrome.isPalindrome("%", offByOne));
+        assertTrue(palindrome.isPalindrome("aCePfDb", offByOne));
+        assertTrue(palindrome.isPalindrome("%%%%%&&&&&", offByOne));
+        assertTrue(palindrome.isPalindrome("bDfPeCa", offByOne));
 
-        assertFalse(offByOne.isPalindrome("abcd", offByOne));
-        assertFalse(offByOne.isPalindrome("##j##", offByOne));
-        assertFalse(offByOne.isPalindrome("baBjkjkiII", offByOne));
+        assertFalse(palindrome.isPalindrome("abcd", offByOne));
+        assertFalse(palindrome.isPalindrome("##j##", offByOne));
+        assertFalse(palindrome.isPalindrome("baBjkjkiII", offByOne));
     }
 }

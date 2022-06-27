@@ -19,4 +19,17 @@ public class Palindrome {
         }
         return true;
     }
+    /** Returns true if the input word is palindrome by the rules of implemented equalChars */
+    public boolean isPalindrome(String word, CharacterComparator cc) {
+        int left = 0;
+        int right = word.length() - 1;
+        while (left < right) {
+            if (!cc.equalChars(word.charAt(left), word.charAt(right))) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
 }
