@@ -9,6 +9,14 @@ public class Palindrome {
     }
 
     public boolean isPalindrome(String word) {
-        return false;
+        Deque<Character> dWord = wordToDeque(word);
+        while (dWord.size() >= 2) {
+            char front = dWord.removeFirst();
+            char end = dWord.removeLast();
+            if (front != end) {
+                return false;
+            }
+        }
+        return true;
     }
 }

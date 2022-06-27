@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -5,7 +6,17 @@ public class TestPalindrome {
     /*// You must use this palindrome, and not instantiate*/
     // new Palindromes, or the autograder might be upset.
     static Palindrome palindrome = new Palindrome();
+    @Test
+    public void testPalindrome() {
+        assertTrue(palindrome.isPalindrome("HappaH"));
+        assertTrue(palindrome.isPalindrome(""));
 
+        assertTrue(palindrome.isPalindrome("@"));
+        assertTrue(palindrome.isPalindrome("GooglelgooG"));
+
+        assertFalse(palindrome.isPalindrome("Aa"));
+        assertFalse(palindrome.isPalindrome("googlelgooG"));
+    }
     @Test
     public void testWordToDeque() {
         Deque d = palindrome.wordToDeque("persiflage");

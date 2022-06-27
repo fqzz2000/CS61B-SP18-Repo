@@ -32,6 +32,7 @@ public class ArrayDeque<T> implements Deque<T>{
             resizeToGivenLength(capacity / 2);
         }
     }
+    @Override
     public void addFirst(T val) {
         updateSizeIfNeeded();
         if (size != 0) {
@@ -40,7 +41,7 @@ public class ArrayDeque<T> implements Deque<T>{
         items[ptrStart] = val;
         size += 1;
     }
-
+    @Override
     public void addLast(T val) {
         updateSizeIfNeeded();
         if (size != 0) {
@@ -49,16 +50,16 @@ public class ArrayDeque<T> implements Deque<T>{
         items[ptrEnd] = val;
         size += 1;
     }
-
+    @Override
     public boolean isEmpty() {
 
         return (size == 0);
     }
-
+    @Override
     public int size() {
         return size;
     }
-
+    @Override
     public void printDeque() {
         for (int i = ptrStart; i < size + ptrStart; i++) {
             System.out.print(items[i < capacity ? i : i - capacity]);
@@ -66,6 +67,7 @@ public class ArrayDeque<T> implements Deque<T>{
         }
         System.out.println();
     }
+    @Override
     public T get(int index) {
         if (index < 0 || index >= size) {
             return null;
@@ -74,6 +76,7 @@ public class ArrayDeque<T> implements Deque<T>{
         index = index < capacity ? index : index - capacity;
         return items[index];
     }
+    @Override
     public T removeFirst() {
         if (size > 0) {
             T node = items[ptrStart];
