@@ -46,5 +46,13 @@ public class TestOffByOne {
         assertFalse(palindrome.isPalindrome("baBjkjkiIIaaBBjinAAAA", offByOne));
         assertFalse(palindrome.isPalindrome("haveaevaH"));
 
+        assertFalse(palindrome.isPalindrome("fuckyou",offByOne));
+        assertFalse(palindrome.isPalindrome("sonofbitch",offByOne));
+        assertFalse(palindrome.isPalindrome("youfuckingidiot",offByOne));
+        assertTrue(palindrome.isPalindrome("flake",offByOne));
+        assertTrue(palindrome.isPalindrome("a",offByOne));
+        assertFalse(palindrome.isPalindrome("ababssba",offByOne));
+        assertTrue(palindrome.isPalindrome("",offByOne));
+
     }
 }
