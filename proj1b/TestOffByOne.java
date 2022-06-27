@@ -12,11 +12,17 @@ public class TestOffByOne {
     static Palindrome palindrome = new Palindrome();
     @Test
     public void testEqualChars() {
-        assertTrue(offByOne.equalChars('a', 'b'));
-        assertFalse(offByOne.equalChars('b', 'd'));
-        assertFalse(offByOne.equalChars(' ', ' '));
-        assertFalse(offByOne.equalChars('c', 'c'));
-        assertTrue(offByOne.equalChars('B', 'A'));
+        // test for all cases
+        for (char i = 0; i < 127; i++) {
+            for (char j = 0; j < 127; j++) {
+                int diff = Math.max(i - j, j - i);
+                if (offByOne.equalChars(i, j)) {
+                    assertEquals(1, diff);
+                } else {
+                    assertNotEquals(1, diff);
+                }
+            }
+        }
     }
     @Test
     public void testPalindrome() {
