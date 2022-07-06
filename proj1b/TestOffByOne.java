@@ -15,7 +15,7 @@ public class TestOffByOne {
         // test for all cases
         for (char i = 0; i < 255; i++) {
             for (char j = 0; j < 255; j++) {
-                int diff = i - j > 0? i - j : j - i;
+                int diff = i - j > 0 ? i - j : j - i;
                 if (offByOne.equalChars(i, j)) {
                     assertEquals(1, diff);
                 } else {
@@ -26,7 +26,40 @@ public class TestOffByOne {
     }
     @Test
     public void testPalindrome() {
+        String str;
+        for (char i = 0; i < 127; i++) {
+            for (char j = 0; j < 127; j++) {
 
+                StringBuilder sb = new StringBuilder();
+                int diff = i - j > 0 ? i - j : j - i;
+                sb.append(i);
+                sb.append('a');
+                sb.append(j);
+                str = sb.toString();
+                if (diff == 1) {
+                    assertTrue(palindrome.isPalindrome(str, offByOne));
+                } else {
+                    assertFalse(palindrome.isPalindrome(str, offByOne));
+                }
+
+
+            }
+        }
+
+        for (char i = 0; i < 127; i++) {
+            for (char j = 0; j < 127; j++) {
+                StringBuilder sb = new StringBuilder();
+                int diff = i - j > 0 ? i - j : j - i;
+                sb.append(i);
+                sb.append(j);
+                str = sb.toString();
+                if (diff == 1) {
+                    assertTrue(palindrome.isPalindrome(str, offByOne));
+                } else {
+                    assertFalse(palindrome.isPalindrome(str, offByOne));
+                }
+            }
+        }
         assertTrue(palindrome.isPalindrome("", offByOne));
         assertTrue(palindrome.isPalindrome("%", offByOne));
         assertTrue(palindrome.isPalindrome("rabq", offByOne));
@@ -47,13 +80,13 @@ public class TestOffByOne {
         assertFalse(palindrome.isPalindrome("baBjkjkiIIaaBBjinAAAA", offByOne));
         assertFalse(palindrome.isPalindrome("haveaevaH"));
 
-        assertFalse(palindrome.isPalindrome("fuckyou",offByOne));
-        assertFalse(palindrome.isPalindrome("sonofbitch",offByOne));
-        assertFalse(palindrome.isPalindrome("youfuckingidiot",offByOne));
-        assertTrue(palindrome.isPalindrome("flake",offByOne));
-        assertTrue(palindrome.isPalindrome("a",offByOne));
-        assertFalse(palindrome.isPalindrome("ababssba",offByOne));
-        assertTrue(palindrome.isPalindrome("",offByOne));
+        assertFalse(palindrome.isPalindrome("fuckyou", offByOne));
+        assertFalse(palindrome.isPalindrome("sonofbitch", offByOne));
+        assertFalse(palindrome.isPalindrome("youfuckingidiot", offByOne));
+        assertTrue(palindrome.isPalindrome("flake", offByOne));
+        assertTrue(palindrome.isPalindrome("a", offByOne));
+        assertFalse(palindrome.isPalindrome("ababssba", offByOne));
+        assertTrue(palindrome.isPalindrome("", offByOne));
 
     }
 }
