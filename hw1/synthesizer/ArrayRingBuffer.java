@@ -73,18 +73,22 @@ public class ArrayRingBuffer<T>  extends AbstractBoundedQueue<T> {
 
     private class ArrayRingIterator implements  Iterator<T> {
         private int pointer;
+        private int counter;
         public ArrayRingIterator() {
             pointer = first;
-
         }
         public boolean hasNext() {
-            return (pointer + 1) % capacity == last || pointer == last;
+            if (counter == fillCount) {
+                return false;
+            }
+            return true;
         }
 
         public T next() {
             T val = rb[pointer];
             pointer += 1;
             pointer %= capacity;
+            counter += 1;
             return val;
         }
 
